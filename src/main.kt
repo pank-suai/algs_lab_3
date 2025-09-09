@@ -126,12 +126,13 @@ class Queue<T>(override val size: Int) : StaticSequence<T> {
  *
  * @param id идентификатор/название задачи
  * @param tacts количество тактов на выполнение
- * @param currentTact текущий такт
+ * @param addedIndex индекс добавления задачи
  */
 @OptIn(ExperimentalUuidApi::class)
-data class Task(val id: String, val tacts: UInt) {
+data class Task(val id: String, val tacts: UInt, val addedIndex: Int = index++) {
     companion object {
-
+        private var index = 1
+        
 
         /**
          * Генерация задач
