@@ -67,7 +67,7 @@ class Stack<T>(override val size: Int) : StaticSequence<T> {
             append("Стек[")
             for (i in _index downTo 0) {
                 append(_stackArray[i])
-                if (i != 0) append(", ")
+                append("\n")
             }
             append("]")
         }
@@ -112,7 +112,7 @@ class Queue<T>(override val size: Int) : StaticSequence<T> {
     override fun toString(): String {
         return buildString {
             append("Очередь[")
-            append(_queueArray.filterNotNull().joinToString(", ")) // Мне очень лень делать нормальный вывод в консоль
+            append(_queueArray.filterNotNull().joinToString("\n"))
             append("]")
         }
     }
@@ -203,7 +203,8 @@ fun main() {
             }
         }.toMutableList()
     }
-    println(tasks)
+
+    println("Задачи: ${tasks.joinToString("\n")}")
 
     val stackSize =
         readUInt(
@@ -258,8 +259,6 @@ fun main() {
             }
         }
 
-
-
         if (tasks.isNotEmpty()) {
             val task = tasks.removeFirst()
 
@@ -273,7 +272,7 @@ fun main() {
 
 
         // Вывод
-        println(tasks)
+        println("Задачи: ${tasks.joinToString("\n")}")
         println(stack)
         p1.tact()
         println(queue)
